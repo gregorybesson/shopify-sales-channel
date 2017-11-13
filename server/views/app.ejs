@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= title %></title>
+  </head>
+  <body>
+    <script src="https://cdn.shopify.com/s/assets/external/app.js"></script>
+
+    <script>
+      window.apiKey = "<%= apiKey %>"
+      window.shopOrigin = "https://<%= shop %>"
+    </script>
+
+    <script>
+      ShopifyApp.init({
+        apiKey: window.apiKey,
+        shopOrigin: window.shopOrigin
+      });
+    </script>
+
+    <div id="root"></div>
+    <script src="/assets/main.js"></script>
+  </body>
+</html>
