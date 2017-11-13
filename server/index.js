@@ -45,6 +45,18 @@ const shopifyConfig = {
       format: 'json'
     });
 
+    registerWebhook(shop, accessToken, {
+      topic: 'product_listings/update',
+      address: SHOPIFY_APP_HOST + '/webhooks/update',
+      format: 'json'
+    });
+
+    registerWebhook(shop, accessToken, {
+      topic: 'product_listings/remove',
+      address: SHOPIFY_APP_HOST + '/webhooks/remove',
+      format: 'json'
+    });
+
     return response.redirect('/');
   },
 };
@@ -124,6 +136,18 @@ app.get('/', withShop, function(request, response) {
 
 // Webhooks
 app.post('/webhooks/add', withWebhook, (request, response) => {
+  console.log('We got a webhook!');
+  console.log('Details: ', request.webhook);
+  console.log('Body:', request.body);
+});
+
+app.post('/webhooks/update', withWebhook, (request, response) => {
+  console.log('We got a webhook!');
+  console.log('Details: ', request.webhook);
+  console.log('Body:', request.body);
+});
+
+app.post('/webhooks/remove', withWebhook, (request, response) => {
   console.log('We got a webhook!');
   console.log('Details: ', request.webhook);
   console.log('Body:', request.body);
